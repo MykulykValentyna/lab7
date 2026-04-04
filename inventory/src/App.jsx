@@ -7,19 +7,14 @@ import AdminInventoryDetails from './pages/AdminInventoryDetails';
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-50 p-4 md:p-8">
-        <div className="max-w-6xl mx-auto">
+      <div className="min-h-screen bg-gray-50 w-full">
+        <div className="max-w-6xl mx-auto p-4 md:p-8">
           <Routes>
             <Route path="/admin" element={<AdminInventory />} />
-
             <Route path="/admin/create" element={<AdminInventoryCreate />} />
-
             <Route path="/admin/edit/:id" element={<AdminInventoryEdit />} />
-
             <Route path="/admin/details/:id" element={<AdminInventoryDetails />} />
-
             <Route path="/" element={<Navigate to="/admin" replace />} />
-
             <Route path="*" element={
               <div className="text-center py-10">
                 <h1 className="text-3xl font-bold text-red-500">404</h1>

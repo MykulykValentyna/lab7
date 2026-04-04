@@ -1,6 +1,14 @@
 import { Link } from 'react-router-dom';
 
-const InventoryTable = ({ items, onDeleteClick }) => {
+const InventoryTable = ({ items = [], onDeleteClick }) => {
+  if (!Array.isArray(items)) {
+    return (
+      <div className="p-10 text-center text-gray-500 italic">
+        Очікування даних...
+      </div>
+    );
+  }
+
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200">
@@ -44,21 +52,21 @@ const InventoryTable = ({ items, onDeleteClick }) => {
               <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3">
                 <Link 
                   to={`/admin/details/${item.id}`} 
-                  className="text-blue-600 hover:text-blue-900 bg-blue-50 px-2 py-1 rounded"
+                  className="text-blue-600 hover:text-blue-900 bg-blue-50 px-2 py-1 rounded transition-colors"
                   title="Переглянути"
                 >
                   👁️
                 </Link>
                 <Link 
                   to={`/admin/edit/${item.id}`} 
-                  className="text-yellow-600 hover:text-yellow-900 bg-yellow-50 px-2 py-1 rounded"
+                  className="text-yellow-600 hover:text-yellow-900 bg-yellow-50 px-2 py-1 rounded transition-colors"
                   title="Редагувати"
                 >
                   ✏️
                 </Link>
                 <button 
                   onClick={() => onDeleteClick(item.id)}
-                  className="text-red-600 hover:text-red-900 bg-red-50 px-2 py-1 rounded"
+                  className="text-red-600 hover:text-red-900 bg-red-50 px-2 py-1 rounded transition-colors"
                   title="Видалити"
                 >
                   🗑️
